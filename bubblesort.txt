@@ -1,0 +1,61 @@
+
+
+// worst/average case TC-->O(n^2) and best case is O(n)
+
+// public class Solution {
+//     public static void bubbleSort(int[] arr, int n) {
+//         //Your code goes here
+      
+//         for(int i=n-1; i>=1; i--){
+//                 int didswap=0; //for optimisation
+//             for(int j=0; j<i; j++){
+
+//                 if(arr[j]> arr[j+1])
+//                 {
+//                     int temp=arr[j];
+//                     arr[j]=arr[j+1];
+//                     arr[j+1]=temp;
+//                     didswap=1;
+//                 }
+//             }
+
+//             if(didswap==0) //breaks at the moment when no swap happens
+//             break;
+//         }
+//     }
+
+// }
+
+//recursive approach with optimisation
+
+public class Solution {
+    public static void bubbleSort(int[] arr, int n) {
+        //Your code goes here
+      helper(arr, n-1);
+    }
+
+    public static void helper(int [] arr, int si){
+
+        if(si<1)
+            return;
+      
+             int didswap=0; //for optimisation
+            for(int j=0; j<si; j++){
+
+                if(arr[j]> arr[j+1])
+                {
+                    int temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                    didswap=1;
+                }
+            }
+             if(didswap==0) //breaks at the moment when no swap happens
+                return;
+                helper(arr, si-1);
+           
+        }
+    }
+
+
+
