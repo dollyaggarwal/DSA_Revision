@@ -1,0 +1,122 @@
+// import java.util.*;
+// public class Solution {
+//     public static List< Integer > sortedArray(int []a, int []b) {
+//         // Write your code here
+
+//         int n=a.length;
+//         int m=b.length;
+
+//         List<Integer> list= new ArrayList<>();
+
+//         int i=0, j=0;
+
+//         while(i<n && j<m){
+//           if( i < n-1 && a[i] == a[i+1]){
+//               i++;
+//               continue;
+//           }
+//           if(j < m-1 && b[j] == b[j+1]){
+//               j++;
+//               continue;
+//           }
+
+//             if(a[i] == b[j]){ 
+//             list.add(a[i]);
+//             i++;
+//             j++;
+//         }
+//         else if(a[i] < b[j]){
+//              list.add(a[i]);
+//               i++;    
+//         }
+//         else{
+//             list.add(b[j]);
+//             j++;
+//         }
+//     }
+
+//     while (i < n){
+//         list.add(a[i]);
+//               i++; 
+//     }
+//     while (j < m){
+//         list.add(b[j]);
+//               j++; 
+//     }
+//     return list;
+//     }
+// }
+
+
+//alternative approach
+
+// import java.util.*;
+// public class Solution {
+//     public static List< Integer > sortedArray(int []a, int []b) {
+//         // Write your code here
+
+//         int n=a.length;
+//         int m=b.length;
+
+//         List<Integer> list= new ArrayList<>();
+
+//         int i=0, j=0;
+
+//         while(i<n && j<m){
+
+           
+//          if(a[i] <= b[j]){
+//               if(list.size()==0 || list.get(list.size()-1)!= a[i])
+//               list.add(a[i]);
+
+//               i++;    
+//         }
+//         else{
+//          if(list.size()==0 || list.get(list.size()-1)!= b[j])
+//             list.add(b[j]);
+
+//             j++;
+//         }
+//     }
+
+//     while (i < n){
+//          if( list.get(list.size()-1)!= a[i])
+//              list.add(a[i]);
+
+//               i++; 
+//     }
+//     while (j < m){
+//           if(list.get(list.size()-1)!= b[j])
+//         list.add(b[j]);
+
+//               j++; 
+//     }
+//     return list;
+//     }
+// }
+
+
+import java.util.*;
+public class Solution {
+    public static List< Integer > sortedArray(int []a, int []b) {
+        // Write your code here
+
+        int n=a.length;
+        int m=b.length;
+
+        TreeSet<Integer> set= new TreeSet<>(); //it maintains order of elements--> min heap
+
+        List<Integer> list= new ArrayList<>();
+
+        for(int val:a)
+            set.add(val);
+        
+        for(int val:b)
+            set.add(val);
+
+        for( int value:set)
+            list.add(value);
+
+            return list;
+    }     
+}
