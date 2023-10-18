@@ -1,0 +1,25 @@
+public class Solution {
+    public static int traffic(int n, int m, int[] vehicle) {
+        int maxLen = 0;
+        int flips = 0;
+        int left = 0;
+
+        for (int right = 0; right < n; right++) {
+            if (vehicle[right] == 0) {
+                flips++;
+            }
+
+            while (flips > m) {
+                if (vehicle[left] == 0) {
+                    flips--;
+                }
+                left++;
+            }
+
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+
+        return maxLen;
+    }
+
+}
